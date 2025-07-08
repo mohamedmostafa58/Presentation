@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alazhar Messenger - Final Presentation</title>
+    <title>Al-Azhar Messenger - Final Presentation</title>
     <style>
         * {
             margin: 0;
@@ -12,9 +12,10 @@
         }
 
         body {
+            /* Updated font stack to use system fonts and avoid external calls */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f2f5;
-            color: #333;
+            color: #333; /* Slightly softer text color for better readability */
             overflow: hidden;
         }
 
@@ -46,8 +47,8 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .slide h1 {
@@ -61,8 +62,8 @@
             font-size: 2.6em;
             color: #0d2c54;
             margin-bottom: 30px;
-            font-weight: 600;
-            border-bottom: 3px solid #1a53a0;
+            font-weight: 700;
+            border-bottom: 4px solid #1a53a0;
             padding-bottom: 10px;
             display: inline-block;
         }
@@ -71,11 +72,12 @@
             font-size: 1.5em;
             color: #1a53a0;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .slide p, .slide li {
             font-size: 1.15em;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 15px;
             max-width: 800px;
         }
@@ -93,14 +95,43 @@
              margin-bottom: 12px;
         }
         
-        .slide li::before {
-            content: '✓';
+        .agenda-list li::before {
+            content: '✓'; /* Changed for a more professional look */
             position: absolute;
             left: 0;
             color: #1a53a0;
             font-weight: bold;
             font-size: 1.2em;
         }
+        
+        /* Enhanced Agenda Styling */
+        .agenda-slide-list {
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .agenda-slide-list li {
+            background-color: #f8f9fa;
+            border-left: 5px solid #1a53a0;
+            padding: 20px;
+            margin-bottom: 15px;
+            font-size: 1.4em; /* Bigger font size */
+            font-weight: 600;
+            color: #0d2c54;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .agenda-slide-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .agenda-slide-list li::before {
+             display: none; /* Hide the default checkmark for this specific list */
+        }
+
 
         .title-slide, .divider-slide {
             background: linear-gradient(135deg, #eef2f3, #8e9eab);
@@ -110,6 +141,7 @@
             border: none;
             color: #0d2c54;
             font-size: 3em;
+            font-weight: 700;
         }
         
         .divider-slide p {
@@ -123,7 +155,7 @@
         }
         
         .title-slide .project-logo {
-            font-size: 4.5em;
+            font-size: 4em;
             margin-bottom: 15px;
             color: #0d2c54;
         }
@@ -134,9 +166,10 @@
 
         .supervisors h3 {
             color: #0d2c54;
-            font-size: 1.4em;
+            font-size: 1.3em;
+            font-weight: 600;
         }
-
+        
         .members-slide .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -151,23 +184,52 @@
             padding: 15px 20px;
             border-radius: 8px;
             border-left: 5px solid #1a53a0;
-            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .member p { margin: 0; font-size: 1.1em; font-weight: 600; }
+        .member .member-id { font-size: 0.9em; color: #555; display: block; margin-top: 4px; font-weight: 400; }
+
+        .gui-container {
+            width: 100%;
+            max-width: 850px;
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
         }
         
-        .member:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch; /* Make grid items equal height */
+            width: 100%;
+            max-width: 1100px;
         }
 
-        .member p {
-            margin: 0;
-            font-size: 1.1em;
+        .feature-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            height: 100%; 
         }
-        .member .member-id {
-            font-size: 0.9em;
-            color: #555;
-            display: block;
-            margin-top: 4px;
+        .feature-card h3 { margin-bottom: 15px; font-size: 1.6em; color: #0d2c54; font-weight: 700; }
+        .feature-card p { font-size: 1.1em; line-height: 1.7; }
+        
+        .feature-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .user-flow-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 8px;
         }
 
         .navigation {
@@ -193,477 +255,383 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .nav-btn:hover {
-            background-color: #1a53a0;
-            transform: translateY(-2px);
-        }
-
-        .nav-btn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+        .nav-btn:hover { background-color: #1a53a0; transform: translateY(-2px); }
+        .nav-btn:disabled { background-color: #cccccc; cursor: not-allowed; transform: none; box-shadow: none; }
 
         .slide-counter {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #0d2c54;
+            background: rgba(13, 44, 84, 0.8);
             color: white;
             padding: 8px 15px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 14px;
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
         
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 30px;
-        }
-        
-        .two-column-grid {
-             grid-template-columns: 1fr 1fr;
-             align-items: flex-start;
+        /* Styling for the vision slide */
+        .vision-slide-content {
+            background-color: rgba(13, 44, 84, 0.9); /* Dark blue, semi-transparent */
+            color: #ffffff;
+            padding: 60px;
+            border-radius: 15px;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .content-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            text-align: left;
-            border-top: 4px solid #1a53a0;
+        .vision-slide-content h2 {
+            font-size: 3em;
+            color: #ffffff;
+            border-bottom: 4px solid #1a53a0;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            display: inline-block;
         }
-        
-        .content-card h3 {
-            margin-bottom: 10px;
-        }
-        
-        /* GUI Illustrations */
-        .gui-container {
-            width: 100%;
-            max-width: 850px;
-            background-color: #e9ecef;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px auto;
-        }
-        
-        .arch-layer {
-            background-color: #ffffff;
-            border: 2px solid #1a53a0;
-            color: #0d2c54;
-            padding: 12px;
-            margin: 8px auto;
-            border-radius: 6px;
-            font-weight: bold;
-            max-width: 80%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .arch-arrow {
+
+        .vision-slide-content p {
             font-size: 1.5em;
-            color: #0d2c54;
-            margin: 2px 0;
+            line-height: 1.6;
+            opacity: 0.9;
+            font-weight: 400;
+            margin: 0;
         }
 
-        .file-tree { text-align: left; padding-left: 20px; }
-        .file-tree ul { padding-left: 20px; border-left: 1px dashed #555; }
-        .file-tree li { font-family: 'Courier New', Courier, monospace; list-style-type: '📁'; padding-left: 10px; }
-        .file-tree li.file { list-style-type: '📄'; }
-        
-        .db-schema-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .db-schema { background: white; border: 1px solid #ccc; border-top: 5px solid #1a53a0; border-radius: 8px; padding: 15px; width: 220px; }
-        .db-schema h4 { color: #0d2c54; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .db-schema ul { padding: 0; margin: 0; text-align: left; }
-        .db-schema li { padding: 2px 0 2px 15px; font-size: 0.9em; margin: 0; }
-        .db-schema li::before { content: '•'; font-size: 0.8em; }
 
-        .api-endpoint { background: #f1f5f9; border-left: 4px solid #4ade80; padding: 10px; margin: 8px 0; border-radius: 4px; text-align: left; font-family: monospace; }
-        .api-endpoint .method { font-weight: bold; color: #0d2c54; }
-        .api-endpoint.post .method { color: #f59e0b; }
-        .api-endpoint.delete .method { color: #ef4444; }
-        
-        .flowchart { display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; }
-        .flow-step { background: white; border: 2px solid #1a53a0; padding: 15px; border-radius: 8px; min-width: 150px; }
-        .flow-arrow { font-size: 2em; color: #0d2c54; }
+        @media (max-width: 900px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .feature-image { max-width: 500px; margin: 20px auto 0 auto; order: -1; }
+        }
 
         @media (max-width: 768px) {
             .slide { padding: 40px 20px; }
             .slide h1 { font-size: 2.5em; }
             .slide h2 { font-size: 2em; }
-            .members-slide .members-grid, .content-grid.two-column-grid { grid-template-columns: 1fr; }
-            .navigation { bottom: 15px; }
-            .nav-btn { padding: 10px 20px; font-size: 14px; }
-            .flowchart { flex-direction: column; }
-            .flow-arrow { transform: rotate(90deg); }
+            .slide p, .slide li { font-size: 1em; }
+            .members-slide .members-grid { grid-template-columns: 1fr; }
+            .vision-slide-content { padding: 40px; }
+            .vision-slide-content h2 { font-size: 2.2em; }
+            .vision-slide-content p { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
     <div class="presentation-container">
         <div class="slide-counter">
-            <span id="current-slide">1</span> / <span id="total-slides">34</span>
+            <span id="current-slide">1</span> / <span id="total-slides">25</span>
         </div>
 
-        <!-- Title -->
+        <!-- Slide 1: Title -->
         <div class="slide active title-slide">
 
             <div class="project-logo">💬</div>
-            <h1>Alazhar Messenger</h1>
-            <p>A Full-Stack Real-time Chat Application with Video Calling</p>
+            <h1>Al-Azhar Messenger</h1>
+            <p>A National Platform for Secure, Real-time Communication</p>
             <div class="supervisors">
                 <h3>Under the supervision of</h3>
                 <p>Dr. Ahmed Zakzouk</p>
             </div>
         </div>
-
-        <!-- Members -->
+        
+        <!-- Slide 2: Team Members -->
         <div class="slide members-slide">
-            <h2>Team Members</h2>
+            <h2>Our Team</h2>
             <div class="members-grid">
-                <div class="member"><p>Rawia Taher Abozaid Ahmed <span class="member-id">ID:20254744 </span></p></div>
-                <div class="member"><p>Shimaa Abdel-Razek Mohamed Ahmed <span class="member-id">ID:20254761 </span></p></div>
-                <div class="member"><p>Shorouk Amr Hosny Mohamed <span class="member-id">ID:20254755 </span></p></div>
-                <div class="member"><p>Eman Atef Mohamed Morsi <span class="member-id">ID:20254728 </span></p></div>
-
+                <div class="member"><p>Rawia Taher Abozaid Ahmed <span class="member-id">ID: 20254744</span></p></div>
+                <div class="member"><p>Shimaa Abdel-Razek Mohamed Ahmed <span class="member-id">ID: 20254761</span></p></div>
+                <div class="member"><p>Shorouk Amr Hosny Mohamed <span class="member-id">ID: 20254755</span></p></div>
+                <div class="member"><p>Eman Atef Mohamed Morsi <span class="member-id">ID: 20254728</span></p></div>
             </div>
         </div>
-        
-        <!-- Divider 1 -->
+
+        <!-- Slide 3: Agenda -->
+        <div class="slide">
+            <h2>Presentation Agenda</h2>
+            <ul class="agenda-slide-list">
+                <li>Introduction & Vision</li>
+                <li>Market Intelligence & The National Need</li>
+                <li>The Solution: Al-Azhar Messenger</li>
+                <li>Strategic Advantage: Uncompromising Security</li>
+                <li>Technical Architecture</li>
+                <li>Project Summary & Conclusion</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: Vision -->
+        <div class="slide title-slide">
+            <div class="vision-slide-content">
+                <h2>Our Vision</h2>
+                <p>To build the default digital communication platform for Egypt's academic and professional institutions, fostering collaboration and innovation on a secure, sovereign foundation.</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Divider -->
         <div class="slide divider-slide">
             <div>
                 <p>Part 1</p>
-                <h2>Project Introduction</h2>
+                <h2>Market Intelligence</h2>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Market Need & Business Intelligence -->
+        <div class="slide">
+            <h2>Market Intelligence & The National Need</h2>
+            <p>Our analysis reveals a clear and urgent demand for a sovereign, secure communication platform.</p>
+            <div class="feature-grid" style="margin-top: 20px; grid-template-columns: 1fr 1fr 1fr; max-width: 1200px;">
+                <div class="feature-card">
+                    <h3>Data Sovereignty</h3>
+                    <p>Growing concerns over foreign data storage and access create a significant opportunity for a locally-hosted solution that guarantees data remains within national borders.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Institutional Trust</h3>
+                    <p>Universities, government bodies, and corporations require communication tools that are not only feature-rich but also verifiably secure and compliant with national regulations.</p>
+                </div>
+                 <div class="feature-card">
+                    <h3>Market Gap</h3>
+                    <p>While global apps dominate the consumer market, a dedicated, high-trust platform for the institutional and professional sectors is a major untapped market.</p>
+                </div>
             </div>
         </div>
 
+        <!-- Slide 7: Target Audience -->
         <div class="slide">
-            <h2>Agenda</h2>
-            <ul>
-                <li>Part 1: Project Introduction</li>
-                <li>Part 2: Technology & Architecture</li>
-                <li>Part 3: Core Features Deep Dive</li>
-                <li>Part 4: Advanced Feature Implementation</li>
-                <li>Part 5: Project Management & Conclusion</li>
-            </ul>
-        </div>
-
-        <div class="slide">
-            <h2>Project Vision & Motivation</h2>
-            <p>To create a modern, reliable, and feature-rich communication platform that provides seamless real-time interaction. The goal is to build a full-stack application that rivals commercial products, focusing on performance, security, and user experience.</p>
-        </div>
-
-        <div class="slide">
-            <h2>Key Features Overview</h2>
-            <div class="content-grid">
-                <div class="content-card"><h3>Real-time Messaging</h3><p>Instant one-on-one and group chat with typing indicators and online status.</p></div>
-                <div class="content-card"><h3>WebRTC Video Calling</h3><p>High-quality, peer-to-peer video and audio calls directly in the browser.</p></div>
-                <div class="content-card"><h3>Multimedia File Sharing</h3><p>Securely send and receive images, documents, and voice messages.</p></div>
-                <div class="content-card"><h3>Robust Security</h3><p>Secure authentication with JWT, password hashing, and protected API endpoints.</p></div>
+            <h2>Target Audience</h2>
+            <p>Our platform is designed for sectors where security and data integrity are paramount.</p>
+             <div class="feature-grid" style="margin-top: 20px; grid-template-columns: 1fr 1fr 1fr; max-width: 1200px;">
+                <div class="feature-card">
+                    <h3>Academic Institutions</h3>
+                    <p>Providing students and faculty with a secure environment for collaboration, research, and communication.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Government Bodies</h3>
+                    <p>Enabling secure inter-departmental communication that is fully compliant with national data laws.</p>
+                </div>
+                 <div class="feature-card">
+                    <h3>Corporate Sector</h3>
+                    <p>Offering a trusted alternative for internal communications, protecting sensitive corporate data.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Divider 2 -->
+        <!-- Slide 8: Strategic Advantage -->
+        <div class="slide">
+            <h2>Strategic Advantage: Uncompromising Security</h2>
+            <p>Our architecture is fundamentally different from global competitors, prioritizing national security and data integrity.</p>
+            <div class="feature-grid" style="margin-top: 20px;">
+                <div class="feature-card">
+                    <h3>Al-Azhar Messenger</h3>
+                    <ul class="agenda-list">
+                        <li>Data hosted locally within national jurisdiction.</li>
+                        <li>Full control over security protocols and encryption.</li>
+                        <li>Immune to foreign data requests and legislation.</li>
+                        <li>Designed for institutional and academic integrity.</li>
+                    </ul>
+                </div>
+                <div class="feature-card" style="background-color: #f8f9fa;">
+                    <h3>Global Competitors</h3>
+                     <ul class="agenda-list">
+                        <li>Data stored on international servers.</li>
+                        <li>Subject to foreign data laws and access requests.</li>
+                        <li>"Black box" security algorithms.</li>
+                        <li>Business models often rely on data analysis.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 9: Divider -->
         <div class="slide divider-slide">
             <div>
                 <p>Part 2</p>
-                <h2>Technology & Architecture</h2>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Technology Stack Overview</h2>
-             <div class="content-grid">
-                <div class="content-card"><h3>Frontend</h3><p>React.js, Tailwind CSS</p></div>
-                <div class="content-card"><h3>Backend</h3><p>Node.js, Express.js, TypeScript</p></div>
-                <div class="content-card"><h3>Database</h3><p>MongoDB, Mongoose</p></div>
-                <div class="content-card"><h3>Real-time</h3><p>Socket.IO, WebRTC</p></div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>System Architecture</h2>
-            <p>A layered architecture ensures a clear separation of concerns.</p>
-            <div class="gui-container">
-                <div class="arch-layer">Browser (React Client)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">API Gateway (Express.js)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Middleware (Auth, Validation)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Business Logic (Controllers/Services)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Data Access Layer (Mongoose)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">MongoDB Database</div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Backend Architecture: Structure</h2>
-            <p>The backend codebase is organized for maintainability.</p>
-            <div class="gui-container file-tree">
-                <ul>
-                    <li>src
-                        <ul>
-                            <li>controllers</li>
-                            <li>database (models)</li>
-                            <li>middlewares</li>
-                            <li>routes</li>
-                            <li>socket</li>
-                            <li class="file">server.ts</li>
-                        </ul>
-                    </li>
-                </ul>
+                <h2>Our Solution: Al-Azhar Messenger</h2>
             </div>
         </div>
         
+        <!-- Slide 10: User Flow -->
         <div class="slide">
-            <h2>Backend Architecture: Design Patterns</h2>
-             <p>We utilized established design patterns to build a robust and scalable backend.</p>
-            <ul>
-                <li><strong>Repository Pattern:</strong> Decouples business logic from data access logic.</li>
-                <li><strong>Middleware Pattern:</strong> Chains functions for handling requests, authentication, and validation.</li>
-                <li><strong>Centralized Error Handling:</strong> A single point for catching and processing all errors.</li>
-            </ul>
-        </div>
-
-        <div class="slide">
-            <h2>Frontend Architecture</h2>
-            <p>React's component-based architecture allows for reusable UI elements and simplified state logic.</p>
+            <h2>Application User Flow</h2>
+            <p>The user journey is designed to be simple and intuitive, from first registration to active communication.</p>
             <div class="gui-container">
-                <div class="arch-layer">App.jsx</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Context Providers (Auth, Socket)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Router (Login Page, Chat Page)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Components (ChatList, MessageArea, VideoCall)</div>
+                <img src="user-flow-diagram.jpeg" alt="User Flow Diagram" class="user-flow-image" onerror="this.src='https://placehold.co/700x400/e9ecef/2c3e50?text=User+Flow+Diagram'">
             </div>
         </div>
 
-        <!-- Divider 3 -->
+        <!-- Slide 11: Login -->
+        <div class="slide">
+            <h2>Feature: Secure User Onboarding</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>What it does</h3>
+                    <p>Provides a secure and straightforward way for users to create an account and sign in. The system supports both light and dark themes for user comfort and accessibility.</p>
+                </div>
+                <img src="login-dark.jpeg" alt="Login Screen Dark Mode" class="feature-image" onerror="this.src='https://placehold.co/600x400/2c3e50/ffffff?text=Login+UI+(Dark)'">
+            </div>
+        </div>
+        
+        <!-- Slide 12: Light/Dark Mode -->
+        <div class="slide">
+            <h2>Feature: Light & Dark Theme</h2>
+             <div class="feature-grid">
+                <img src="login-light.jpeg" alt="Login Screen Light Mode" class="feature-image" onerror="this.src='https://placehold.co/600x400/f0f2f5/2c3e50?text=Login+UI+(Light)'">
+                <div class="feature-card">
+                    <h3>What it does</h3>
+                    <p>Allows users to switch between a light and dark user interface. This enhances visual ergonomics, reduces eye strain in low-light conditions, and improves accessibility.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Profile -->
+        <div class="slide">
+            <h2>Feature: Profile Management</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>What it does</h3>
+                    <p>This section acts as a user's digital identity within the app, centralizing their personal details and providing access to settings like logging out.</p>
+                </div>
+                <img src="profile-page.jpeg" alt="User Profile Screen" class="feature-image" onerror="this.src='https://placehold.co/600x400/eef2f3/2c3e50?text=Profile+Page'">
+            </div>
+        </div>
+        
+        <!-- Slide 14: Chat Dashboard -->
+        <div class="slide">
+            <h2>Feature: The Chat Dashboard</h2>
+             <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>What it does</h3>
+                    <p>The main interface provides a comprehensive list of all recent conversations. Users can quickly see who messaged them last and when, allowing for easy navigation between chats.</p>
+                </div>
+                <img src="chat-dashboard-light.jpeg" alt="Chat Dashboard" class="feature-image" onerror="this.src='https://placehold.co/600x400/ffffff/2c3e50?text=Chat+Dashboard'">
+            </div>
+        </div>
+        
+        <!-- Slide 15: Initiating & Group Chats -->
+        <div class="slide">
+            <h2>Feature: Flexible Conversations</h2>
+             <div class="feature-grid">
+                <img src="create-group-chat.jpeg" alt="Creating a group chat" class="feature-image" onerror="this.src='https://placehold.co/600x400/eef2f3/2c3e50?text=New+Group+Chat'">
+                <div class="feature-card">
+                    <h3>One-to-One & Groups</h3>
+                    <p>Users can easily find other members and start private conversations. The platform also supports robust group chats with custom names and participant management for project teams and classes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Messaging -->
+        <div class="slide">
+            <h2>Feature: Rich, Instant Messaging</h2>
+            <div class="feature-grid">
+                 <div class="feature-card">
+                    <h3>Text, Images & Files</h3>
+                    <p>Messages are delivered instantly. Communication is enriched with support for image attachments with previews, and sharing of important documents and files directly within the chat.</p>
+                </div>
+                <img src="messaging-interface-dark.jpeg" alt="Instant Messaging Interface" class="feature-image" onerror="this.src='https://placehold.co/600x400/2c3e50/ffffff?text=Messaging+UI'">
+            </div>
+        </div>
+        
+        <!-- Slide 17: Voice Messaging -->
+        <div class="slide">
+            <h2>Feature: Voice Messaging</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>What it does</h3>
+                    <p>For hands-free communication, users can record and send short audio messages. The interface is simple: record, review, and send.</p>
+                </div>
+                <img src="WhatsApp Image 2025-07-09 at 02.08.27.jpeg" alt="Voice message recording UI" class="feature-image" style="max-width: 450px; border: 1px solid #ddd;">
+            </div>
+        </div>
+
+        <!-- Slide 18: Initiating Video Calls -->
+        <div class="slide">
+            <h2>Feature: High-Quality Video Calls</h2>
+            <div class="feature-grid">
+                 <div class="feature-card">
+                    <h3>What it does</h3>
+                    <p>Users can escalate from text to a face-to-face call with a single click. The system provides clear feedback while the connection is initiated, running on secure, peer-to-peer technology.</p>
+                </div>
+                <img src="WhatsApp Image 2025-07-09 at 02.23.14.jpeg" alt="Initiating a video call" class="feature-image" style="max-width: 400px; border-radius: 20px;">
+            </div>
+        </div>
+        
+        <!-- Slide 19: Divider -->
         <div class="slide divider-slide">
             <div>
                 <p>Part 3</p>
-                <h2>Core Features Deep Dive</h2>
+                <h2>Technical Foundation</h2>
             </div>
         </div>
 
+        <!-- Slide 20: Technology Stack - Frontend -->
         <div class="slide">
-            <h2>Database Design: Data Models</h2>
-            <p>Our MongoDB database uses distinct collections designed for efficient querying.</p>
-            <div class="gui-container db-schema-container">
-                <div class="db-schema"><h4>User</h4><ul><li>username</li><li>email</li><li>password (hash)</li><li>avatarUrl</li></ul></div>
-                <div class="db-schema"><h4>Chat</h4><ul><li>name</li><li>isGroupChat</li><li>participants[]</li><li>lastMessage</li></ul></div>
-                <div class="db-schema"><h4>Message</h4><ul><li>sender</li><li>content</li><li>chat</li><li>attachments[]</li></ul></div>
+            <h2>Technology Stack: Frontend</h2>
+            <p>A modern, responsive, and interactive user experience built with industry-standard technologies.</p>
+            <div class="feature-grid" style="grid-template-columns: 1fr 1fr 1fr; max-width: 1200px;">
+                <div class="feature-card"><h3>React</h3><p>For building a dynamic, component-based user interface that updates efficiently.</p></div>
+                <div class="feature-card"><h3>Socket.IO Client</h3><p>Manages the real-time, bidirectional communication with the server for instant messaging.</p></div>
+                <div class="feature-card"><h3>WebRTC</h3><p>Enables peer-to-peer, low-latency audio and video streams directly between users.</p></div>
             </div>
         </div>
 
+        <!-- Slide 21: Technology Stack - Backend -->
         <div class="slide">
-            <h2>Database Design: Relationships</h2>
-            <p>Data models are interconnected using ObjectIDs.</p>
-             <div class="gui-container flowchart">
-                <div class="flow-step">User</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Creates / Joins</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Chat</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Sends / Receives</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Message</div>
+            <h2>Technology Stack: Backend</h2>
+            <p>A robust and scalable server-side architecture designed for performance and security.</p>
+             <div class="feature-grid" style="grid-template-columns: 1fr 1fr 1fr; max-width: 1200px;">
+                <div class="feature-card"><h3>Node.js & Express</h3><p>Provides a fast and efficient runtime for our server and a solid framework for building our API.</p></div>
+                <div class="feature-card"><h3>MongoDB</h3><p>A flexible NoSQL database to store user data, chat histories, and application information.</p></div>
+                <div class="feature-card"><h3>Socket.IO Server</h3><p>The core of our real-time engine, managing connections, rooms, and event broadcasting.</p></div>
             </div>
         </div>
 
+        <!-- Slide 22: Real-time Architecture -->
         <div class="slide">
-            <h2>API Design: Key Endpoints</h2>
-            <p>The API exposes endpoints for all major functionalities.</p>
-            <div class="gui-container" style="text-align: left;">
-                <div class="api-endpoint post"><span class="method">POST</span> /auth/register</div>
-                <div class="api-endpoint post"><span class="method">POST</span> /auth/login</div>
-                <div class="api-endpoint"><span class="method">GET</span> /api/chats</div>
-                <div class="api-endpoint post"><span class="method">POST</span> /api/messages/:chatId</div>
-                <div class="api-endpoint delete"><span class="method">DELETE</span> /api/messages/:messageId</div>
+            <h2>Real-time Architecture</h2>
+            <p>Our system is built around a central signaling server that orchestrates communication.</p>
+            <div class="gui-container">
+                <p>1. Users connect to the Socket.IO server and authenticate.</p>
+                <p>2. The server manages user presence and chat room assignments.</p>
+                <p>3. Text messages and file metadata are relayed through the server to all users in a room.</p>
+                <p>4. For video/audio calls, the server acts as a WebRTC signaling layer, allowing peers to establish a direct connection.</p>
             </div>
         </div>
 
+        <!-- Slide 23: Key Achievements -->
         <div class="slide">
-            <h2>Authentication: JWT Flow</h2>
-            <p>User authentication is handled via a secure and stateless JWT flow.</p>
-            <div class="gui-container flowchart">
-                <div class="flow-step">1. Login with Credentials</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">2. Server Validates & Issues Token</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">3. Client Stores Token</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">4. Token Sent in Header for API Calls</div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Security Measures</h2>
-            <p>Security is implemented at multiple layers of the application.</p>
-            <div class="content-grid two-column-grid">
-                <div class="content-card"><h3>Password Hashing</h3><p>Using `bcrypt` to securely hash and salt user passwords before storing them.</p></div>
-                <div class="content-card"><h3>Rate Limiting</h3><p>Protecting against brute-force attacks by limiting API requests per IP.</p></div>
-                <div class="content-card"><h3>CORS Policy</h3><p>Restricting API access to only our whitelisted frontend domain.</p></div>
-                <div class="content-card"><h3>Input Validation</h3><p>Sanitizing all user input on the backend to prevent injection attacks.</p></div>
-            </div>
-        </div>
-        
-        <div class="slide">
-            <h2>Real-time Intro: Socket.IO</h2>
-            <p>Socket.IO enables real-time, bidirectional communication.</p>
-            <div class="gui-container flowchart">
-                <div class="flow-step">Client</div>
-                <div class="flow-arrow" style="writing-mode: vertical-rl; transform: rotate(180deg);">↔</div>
-                <div class="flow-step">Socket.IO Server</div>
-            </div>
-             <p style="margin-top: 10px;">This persistent connection allows the server to push updates instantly.</p>
-        </div>
-
-        <div class="slide">
-            <h2>Real-time: Event Handling</h2>
-            <p>The application defines and handles specific socket events for all real-time interactions.</p>
-             <div class="gui-container">
-                <p>Client emits <strong>'sendMessage'</strong> → Server receives → Server broadcasts <strong>'messageReceived'</strong> to chat room members.</p>
-                <p style="margin-top: 15px;">Client emits <strong>'startTyping'</strong> → Server broadcasts <strong>'typing'</strong> to other user.</p>
-            </div>
-        </div>
-
-        <!-- Divider 4 -->
-        <div class="slide divider-slide">
-            <div>
-                <p>Part 4</p>
-                <h2>Advanced Feature Implementation</h2>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Intro to WebRTC</h2>
-            <p>WebRTC enables peer-to-peer audio and video communication directly in the browser, without an intermediary server for the media stream.</p>
-        </div>
-
-        <div class="slide">
-            <h2>WebRTC: Signaling Explained</h2>
-            <p>A "signaling" server is needed to help two clients find and connect to each other. We use our Socket.IO server for this.</p>
-            <div class="gui-container flowchart">
-                <div class="flow-step">Caller sends Offer</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Signaling Server</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Receiver gets Offer, sends Answer</div>
-                <div class="flow-arrow">←</div>
-                 <div class="flow-step">Signaling Server</div>
-                <div class="flow-arrow">←</div>
-                <div class="flow-step">Caller gets Answer</div>
-            </div>
-            <p>After this, a direct P2P connection is established.</p>
-        </div>
-
-        <div class="slide">
-            <h2>WebRTC: Implementation</h2>
-            <p>The `RTCPeerConnection` object manages the lifecycle of a peer-to-peer connection.</p>
-             <div class="gui-container">
-                <div class="arch-layer">Create RTCPeerConnection</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Add Local Media Stream (Camera/Mic)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Create & Send Offer (via Signaling)</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Receive Answer & Set Remote Description</div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-layer">Handle Remote Media Stream</div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>File Uploads: The Process</h2>
-            <p>Files are processed on the server using `multer` middleware and stored securely.</p>
-            <div class="gui-container flowchart">
-                <div class="flow-step">1. Client Uploads File</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">2. Express Server & Multer Middleware</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">3. File Saved to Disk</div>
-                 <div class="flow-arrow">→</div>
-                <div class="flow-step">4. Path Saved to DB</div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>File Uploads: Security</h2>
-            <p>To ensure security and system stability, all file uploads are validated on the server.</p>
-            <ul>
-                <li><strong>File Type Validation:</strong> Only whitelisted file extensions (e.g., .jpg, .png, .pdf) are accepted.</li>
-                <li><strong>File Size Limits:</strong> A maximum file size is enforced to prevent disk space abuse.</li>
+            <h2>Key Achievements</h2>
+            <p>This project successfully delivered a modern, full-featured, and real-time communication platform.</p>
+            <ul class="agenda-list">
+                <li>Developed a complete Full-Stack Application from scratch.</li>
+                <li>Implemented a robust, secure, and scalable backend architecture.</li>
+                <li>Created an intuitive and responsive user interface with light/dark modes.</li>
+                <li>Successfully integrated complex real-time technologies for a seamless experience.</li>
             </ul>
         </div>
-
+        
+        <!-- Slide 24: Future Roadmap -->
         <div class="slide">
-            <h2>UI/UX & Responsive Design</h2>
-            <p>The application is fully responsive, providing an optimal user experience on all devices.</p>
-            <div class="gui-container" style="display: flex; justify-content: space-around; align-items: flex-end; gap: 20px;">
-                <img src="https://placehold.co/300x200/0d2c54/ffffff?text=Desktop" alt="Desktop Mockup" style="border: 5px solid #333; border-radius: 5px;">
-                <img src="https://placehold.co/150x220/0d2c54/ffffff?text=Tablet" alt="Tablet Mockup" style="border: 5px solid #333; border-radius: 5px;">
-                <img src="https://placehold.co/80x160/0d2c54/ffffff?text=Mobile" alt="Mobile Mockup" style="border: 5px solid #333; border-radius: 5px;">
-            </div>
-        </div>
-
-        <!-- Divider 5 -->
-        <div class="slide divider-slide">
-            <div>
-                <p>Part 5</p>
-                <h2>Project Management & Conclusion</h2>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Error Handling & Validation</h2>
-            <p>Robust error handling prevents crashes, while input validation protects the system.</p>
-            <div class="gui-container">
-                 <div class="arch-layer">Request Arrives</div>
-                 <div class="arch-arrow">↓</div>
-                 <div class="arch-layer" style="border-color: #f59e0b;">Validation Middleware (Checks Input)</div>
-                 <div class="arch-arrow">↓</div>
-                 <div class="arch-layer">Controller Logic (try...catch block)</div>
-                 <div class="arch-arrow">↓</div>
-                 <div class="arch-layer" style="border-color: #ef4444;">Central Error Handler (Catches all errors)</div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Challenges & Solutions</h2>
-            <div class="content-grid">
-                <div class="content-card"><h3>Challenge: WebRTC Complexity</h3><p><strong>Solution:</strong> Implemented STUN/TURN servers for NAT traversal and a robust signaling mechanism.</p></div>
-                <div class="content-card"><h3>Challenge: Real-time State Sync</h3><p><strong>Solution:</strong> Used Socket.IO rooms for efficient event broadcasting and React Context for centralized state management.</p></div>
-                <div class="content-card"><h3>Challenge: Scalable Architecture</h3><p><strong>Solution:</strong> Adopted a modular structure with design patterns like Repository to ensure the system is maintainable and extensible.</p></div>
-            </div>
-        </div>
-
-        <div class="slide">
-            <h2>Future Enhancements</h2>
+            <h2>Future Roadmap</h2>
             <p>The application has a solid foundation for future growth and new features.</p>
-            <div class="content-grid two-column-grid">
-                <div class="content-card"><h3>Message Reactions & Replies</h3><p>Adding the ability to react to messages with emojis and reply in threads.</p></div>
-                <div class="content-card"><h3>End-to-End Encryption</h3><p>Implementing E2EE for maximum privacy and security in one-on-one chats.</p></div>
-                <div class="content-card"><h3>Cloud Storage Integration</h3><p>Moving file storage to a cloud service like AWS S3 for better scalability.</p></div>
-                <div class="content-card"><h3>Mobile App</h3><p>Developing a native mobile application using React Native for iOS and Android.</p></div>
+            <div style="display: flex; gap: 40px; justify-content: center; text-align: left;">
+                <ul class="agenda-list">
+                    <li>End-to-End Encryption (E2EE)</li>
+                    <li>Advanced Admin Dashboards</li>
+                    <li>Message Reactions & Replies</li>
+                </ul>
+                <ul class="agenda-list">
+                    <li>Integration with National ID systems</li>
+                    <li>Deployment on local cloud infrastructure</li>
+                    <li>Native Mobile Applications</li>
+                </ul>
             </div>
         </div>
 
+        <!-- Slide 25: Thank You -->
         <div class="slide title-slide">
             <h1>Thank You</h1>
-            <p>This project successfully demonstrates a full-stack, real-time communication platform with modern web technologies.</p>
+            <p>A demonstration of a secure, sovereign communication platform for the nation.</p>
             <div class="supervisors" style="margin-top: 50px;">
                 <h3>Questions & Discussion</h3>
             </div>
@@ -681,17 +649,30 @@
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
         
-        document.getElementById('total-slides').textContent = totalSlides;
+        // Update the total slide count display
+        if(document.getElementById('total-slides')) {
+            document.getElementById('total-slides').textContent = totalSlides;
+        }
         
         function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
+            if (slides[currentSlide]) {
+                slides[currentSlide].classList.remove('active');
+            }
             currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
+            if (slides[currentSlide]) {
+                slides[currentSlide].classList.add('active');
+            }
             
-            document.getElementById('current-slide').textContent = currentSlide + 1;
+            if (document.getElementById('current-slide')) {
+                document.getElementById('current-slide').textContent = currentSlide + 1;
+            }
             
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            if (document.getElementById('prevBtn')) {
+                document.getElementById('prevBtn').disabled = currentSlide === 0;
+            }
+            if (document.getElementById('nextBtn')) {
+                document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            }
         }
         
         function changeSlide(direction) {
@@ -701,6 +682,7 @@
             }
         }
         
+        // Initialize the first slide
         showSlide(0);
         
         document.addEventListener('keydown', function(e) {
