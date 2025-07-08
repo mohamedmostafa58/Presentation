@@ -3,1746 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alazhar Messenger - Project Presentation</title>
+    <title>Alazhar Messenger - Final Presentation</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #f0f2f5;
             color: #333;
             overflow: hidden;
         }
-        
+
         .presentation-container {
             position: relative;
             width: 100vw;
             height: 100vh;
         }
-        
+
         .slide {
             display: none;
             width: 100%;
             height: 100%;
-            padding: 40px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 50px 60px;
+            background-color: #ffffff;
             position: absolute;
             top: 0;
             left: 0;
             overflow-y: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
-        
+
         .slide.active {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+            animation: fadeIn 0.5s ease-in-out;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         .slide h1 {
-            font-size: 3em;
-            margin-bottom: 30px;
-            color: #2563eb;
-            text-align: center;
+            font-size: 3.2em;
+            color: #0d2c54;
+            margin-bottom: 20px;
             font-weight: 700;
         }
-        
+
         .slide h2 {
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            color: #1d4ed8;
-            text-align: center;
+            font-size: 2.6em;
+            color: #0d2c54;
+            margin-bottom: 30px;
             font-weight: 600;
+            border-bottom: 3px solid #1a53a0;
+            padding-bottom: 10px;
+            display: inline-block;
         }
-        
+
         .slide h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #2563eb;
-            text-align: center;
+            font-size: 1.5em;
+            color: #1a53a0;
+            margin-bottom: 15px;
         }
-        
+
         .slide p, .slide li {
-            font-size: 1.2em;
+            font-size: 1.15em;
             line-height: 1.6;
             margin-bottom: 15px;
-            text-align: center;
+            max-width: 800px;
         }
         
         .slide ul {
-            max-width: 800px;
+            list-style: none;
             text-align: left;
+            max-width: 700px;
+            margin-top: 20px;
         }
         
         .slide li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
+             padding-left: 30px;
+             position: relative;
+             margin-bottom: 12px;
         }
         
         .slide li::before {
-            content: "✓";
+            content: '✓';
             position: absolute;
             left: 0;
-            color: #10b981;
+            color: #1a53a0;
             font-weight: bold;
+            font-size: 1.2em;
         }
 
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            .slide {
-                padding: 20px 15px;
-                padding-bottom: 80px; /* Space for navigation */
-            }
-            
-            .slide h1 {
-                font-size: 2.2em;
-                margin-bottom: 20px;
-            }
-            
-            .slide h2 {
-                font-size: 1.8em;
-                margin-bottom: 20px;
-            }
-            
-            .slide h3 {
-                font-size: 1.4em;
-                margin-bottom: 15px;
-            }
-            
-            .slide p, .slide li {
-                font-size: 1em;
-                line-height: 1.5;
-                margin-bottom: 12px;
-            }
-            
-            .slide ul {
-                max-width: 100%;
-            }
-            
-            .slide li {
-                padding-left: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide {
-                padding: 15px 10px;
-                padding-bottom: 90px;
-            }
-            
-            .slide h1 {
-                font-size: 1.8em;
-                margin-bottom: 15px;
-            }
-            
-            .slide h2 {
-                font-size: 1.5em;
-                margin-bottom: 15px;
-            }
-            
-            .slide h3 {
-                font-size: 1.2em;
-                margin-bottom: 12px;
-            }
-            
-            .slide p, .slide li {
-                font-size: 0.9em;
-                line-height: 1.4;
-                margin-bottom: 10px;
-            }
-            
-            .slide li {
-                padding-left: 12px;
-            }
+        .title-slide, .divider-slide {
+            background: linear-gradient(135deg, #eef2f3, #8e9eab);
         }
         
+        .divider-slide h2 {
+            border: none;
+            color: #0d2c54;
+            font-size: 3em;
+        }
+        
+        .divider-slide p {
+            font-size: 1.5em;
+            color: #34495e;
+        }
+
+        .title-slide .university-logo {
+            width: 140px;
+            margin-bottom: 25px;
+        }
+        
+        .title-slide .project-logo {
+            font-size: 4.5em;
+            margin-bottom: 15px;
+            color: #0d2c54;
+        }
+
+        .supervisors {
+            margin-top: 25px;
+        }
+
+        .supervisors h3 {
+            color: #0d2c54;
+            font-size: 1.4em;
+        }
+
+        .members-slide .members-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 40px;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 900px;
+        }
+
+        .member {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 5px solid #1a53a0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .member:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .member p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        .member .member-id {
+            font-size: 0.9em;
+            color: #555;
+            display: block;
+            margin-top: 4px;
+        }
+
         .navigation {
             position: fixed;
-            bottom: 15px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 15px;
             z-index: 1000;
-            background: rgba(37, 99, 235, 0.95);
-            padding: 10px;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
         }
-        
+
         .nav-btn {
-            padding: 12px 20px;
-            background: transparent;
+            padding: 12px 25px;
+            background-color: #0d2c54;
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
+            border: none;
+            border-radius: 25px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            min-width: 80px;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        
+
         .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.6);
+            background-color: #1a53a0;
             transform: translateY(-2px);
         }
-        
+
         .nav-btn:disabled {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.4);
-            border-color: rgba(255, 255, 255, 0.2);
+            background-color: #cccccc;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
-        
+
         .slide-counter {
             position: fixed;
-            top: 15px;
-            right: 15px;
-            background: rgba(37, 99, 235, 0.95);
+            top: 20px;
+            right: 20px;
+            background: #0d2c54;
             color: white;
-            padding: 8px 12px;
+            padding: 8px 15px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 14px;
-            backdrop-filter: blur(10px);
             z-index: 1000;
         }
-
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            .navigation {
-                bottom: 10px;
-                gap: 8px;
-                padding: 8px;
-                border-radius: 20px;
-            }
-            
-            .nav-btn {
-                padding: 10px 16px;
-                font-size: 14px;
-                min-width: 70px;
-                border-radius: 15px;
-            }
-            
-            .slide-counter {
-                top: 10px;
-                right: 10px;
-                padding: 6px 10px;
-                font-size: 12px;
-                border-radius: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navigation {
-                bottom: 8px;
-                gap: 6px;
-                padding: 6px;
-                border-radius: 18px;
-            }
-            
-            .nav-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-                min-width: 60px;
-                border-radius: 12px;
-            }
-            
-            .slide-counter {
-                top: 8px;
-                right: 8px;
-                padding: 5px 8px;
-                font-size: 11px;
-                border-radius: 12px;
-            }
-        }
         
-        .tech-grid {
+        .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             width: 100%;
-        }
-        
-        .tech-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
             max-width: 1200px;
-            margin: 20px 0;
-            width: 100%;
+            margin-top: 30px;
         }
         
-        .feature-card {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        .two-column-grid {
+             grid-template-columns: 1fr 1fr;
+             align-items: flex-start;
         }
 
-        /* Mobile Grid Styles */
-        @media (max-width: 768px) {
-            .tech-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-                margin: 15px 0;
-            }
-            
-            .tech-card {
-                padding: 15px;
-            }
-            
-            .tech-card h4 {
-                font-size: 1.1em;
-                margin-bottom: 8px;
-            }
-            
-            .tech-card p {
-                font-size: 0.9em;
-                margin-bottom: 5px;
-            }
-            
-            .feature-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-                margin: 15px 0;
-            }
-            
-            .feature-card {
-                padding: 15px;
-            }
-            
-            .feature-card h4 {
-                font-size: 1.1em;
-                margin-bottom: 8px;
-            }
-            
-            .feature-card p {
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tech-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-                margin: 12px 0;
-            }
-            
-            .tech-card {
-                padding: 12px;
-            }
-            
-            .tech-card h4 {
-                font-size: 1em;
-                margin-bottom: 6px;
-            }
-            
-            .tech-card p {
-                font-size: 0.8em;
-                margin-bottom: 3px;
-            }
-            
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin: 12px 0;
-            }
-            
-            .feature-card {
-                padding: 12px;
-            }
-            
-            .feature-card h4 {
-                font-size: 1em;
-                margin-bottom: 6px;
-            }
-            
-            .feature-card p {
-                font-size: 0.8em;
-            }
-        }
-        
-        .code-block {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 20px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            text-align: left;
-            max-width: 800px;
-            margin: 20px auto;
-            overflow-x: auto;
-            font-size: 14px;
-            line-height: 1.4;
-            width: 100%;
-        }
-        
-        .architecture-diagram {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 900px;
-            margin: 20px auto;
-            width: 100%;
-        }
-        
-        .layer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .api-endpoint {
-            background: #f1f5f9;
-            border-left: 4px solid #2563eb;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 0 8px 8px 0;
-            width: 100%;
-        }
-
-        /* Mobile Code Block and Architecture Styles */
-        @media (max-width: 768px) {
-            .code-block {
-                padding: 15px;
-                font-size: 12px;
-                line-height: 1.3;
-                margin: 15px 0;
-                border-radius: 6px;
-            }
-            
-            .architecture-diagram {
-                padding: 20px;
-                margin: 15px 0;
-            }
-            
-            .layer {
-                padding: 12px;
-                margin: 8px 0;
-                font-size: 0.9em;
-            }
-            
-            .api-endpoint {
-                padding: 12px;
-                margin: 8px 0;
-                font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .code-block {
-                padding: 12px;
-                font-size: 11px;
-                line-height: 1.2;
-                margin: 12px 0;
-                border-radius: 5px;
-            }
-            
-            .architecture-diagram {
-                padding: 15px;
-                margin: 12px 0;
-            }
-            
-            .layer {
-                padding: 10px;
-                margin: 6px 0;
-                font-size: 0.8em;
-            }
-            
-            .api-endpoint {
-                padding: 10px;
-                margin: 6px 0;
-                font-size: 0.8em;
-            }
-        }
-        
-        .logo {
-            font-size: 4em;
-            color: #2563eb;
-            margin-bottom: 20px;
-        }
-        
-        .title-slide {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .title-slide h1 {
-            color: white;
-            font-size: 4em;
-            margin-bottom: 40px;
-        }
-        
-        .title-slide p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 30px 0;
-            width: 100%;
-        }
-        
-        .stat-card {
-            background: #2563eb;
-            color: white;
+        .content-card {
+            background: #f8f9fa;
             padding: 25px;
             border-radius: 10px;
-            text-align: center;
+            text-align: left;
+            border-top: 4px solid #1a53a0;
         }
         
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            display: block;
+        .content-card h3 {
+            margin-bottom: 10px;
         }
         
-        .stat-label {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 5px solid #2563eb;
+        /* GUI Illustrations */
+        .gui-container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 850px;
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+        }
+        
+        .arch-layer {
+            background-color: #ffffff;
+            border: 2px solid #1a53a0;
+            color: #0d2c54;
+            padding: 12px;
+            margin: 8px auto;
+            border-radius: 6px;
+            font-weight: bold;
+            max-width: 80%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .arch-arrow {
+            font-size: 1.5em;
+            color: #0d2c54;
+            margin: 2px 0;
         }
 
-        /* Mobile Stats and Highlight Styles */
+        .file-tree { text-align: left; padding-left: 20px; }
+        .file-tree ul { padding-left: 20px; border-left: 1px dashed #555; }
+        .file-tree li { font-family: 'Courier New', Courier, monospace; list-style-type: '📁'; padding-left: 10px; }
+        .file-tree li.file { list-style-type: '📄'; }
+        
+        .db-schema-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .db-schema { background: white; border: 1px solid #ccc; border-top: 5px solid #1a53a0; border-radius: 8px; padding: 15px; width: 220px; }
+        .db-schema h4 { color: #0d2c54; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .db-schema ul { padding: 0; margin: 0; text-align: left; }
+        .db-schema li { padding: 2px 0 2px 15px; font-size: 0.9em; margin: 0; }
+        .db-schema li::before { content: '•'; font-size: 0.8em; }
+
+        .api-endpoint { background: #f1f5f9; border-left: 4px solid #4ade80; padding: 10px; margin: 8px 0; border-radius: 4px; text-align: left; font-family: monospace; }
+        .api-endpoint .method { font-weight: bold; color: #0d2c54; }
+        .api-endpoint.post .method { color: #f59e0b; }
+        .api-endpoint.delete .method { color: #ef4444; }
+        
+        .flowchart { display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .flow-step { background: white; border: 2px solid #1a53a0; padding: 15px; border-radius: 8px; min-width: 150px; }
+        .flow-arrow { font-size: 2em; color: #0d2c54; }
+
         @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 15px;
-                margin: 20px 0;
-            }
-            
-            .stat-card {
-                padding: 20px;
-            }
-            
-            .stat-number {
-                font-size: 2em;
-            }
-            
-            .stat-label {
-                font-size: 0.8em;
-            }
-            
-            .highlight {
-                padding: 15px;
-                margin: 15px 0;
-            }
-            
-            .highlight h3 {
-                font-size: 1.3em;
-                margin-bottom: 10px;
-            }
-            
-            .highlight p {
-                font-size: 0.95em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                margin: 15px 0;
-            }
-            
-            .stat-card {
-                padding: 15px;
-            }
-            
-            .stat-number {
-                font-size: 1.8em;
-            }
-            
-            .stat-label {
-                font-size: 0.75em;
-            }
-            
-            .highlight {
-                padding: 12px;
-                margin: 12px 0;
-            }
-            
-            .highlight h3 {
-                font-size: 1.1em;
-                margin-bottom: 8px;
-            }
-            
-            .highlight p {
-                font-size: 0.85em;
-            }
-        }
-
-        /* Title Slide Mobile Styles */
-        @media (max-width: 768px) {
-            .title-slide h1 {
-                font-size: 2.5em !important;
-                margin-bottom: 25px !important;
-            }
-            
-            .title-slide p {
-                font-size: 1.2em !important;
-                margin-bottom: 15px !important;
-            }
-            
-            .logo {
-                font-size: 3em !important;
-                margin-bottom: 15px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .title-slide h1 {
-                font-size: 2em !important;
-                margin-bottom: 20px !important;
-            }
-            
-            .title-slide p {
-                font-size: 1em !important;
-                margin-bottom: 12px !important;
-            }
-            
-            .logo {
-                font-size: 2.5em !important;
-                margin-bottom: 12px !important;
-            }
-        }
-
-        /* Touch-friendly improvements */
-        @media (hover: none) {
-            .feature-card:hover {
-                transform: none;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-            
-            .nav-btn:hover {
-                background: transparent;
-                border-color: rgba(255, 255, 255, 0.3);
-                transform: none;
-            }
-        }
-
-        /* Landscape mobile orientation */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .slide {
-                padding: 15px;
-                padding-bottom: 70px;
-            }
-            
-            .slide h1 {
-                font-size: 1.8em;
-                margin-bottom: 15px;
-            }
-            
-            .slide h2 {
-                font-size: 1.5em;
-                margin-bottom: 15px;
-            }
-            
-            .navigation {
-                bottom: 8px;
-            }
-            
-            .slide-counter {
-                top: 8px;
-            }
+            .slide { padding: 40px 20px; }
+            .slide h1 { font-size: 2.5em; }
+            .slide h2 { font-size: 2em; }
+            .members-slide .members-grid, .content-grid.two-column-grid { grid-template-columns: 1fr; }
+            .navigation { bottom: 15px; }
+            .nav-btn { padding: 10px 20px; font-size: 14px; }
+            .flowchart { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
         }
     </style>
 </head>
 <body>
     <div class="presentation-container">
         <div class="slide-counter">
-            <span id="current-slide">1</span> / <span id="total-slides">25</span>
+            <span id="current-slide">1</span> / <span id="total-slides">34</span>
         </div>
 
-        <!-- Slide 1: Title -->
+        <!-- Title -->
         <div class="slide active title-slide">
-            <div class="logo">💬</div>
+
+            <div class="project-logo">💬</div>
             <h1>Alazhar Messenger</h1>
-            <p>Real-time Chat Application with Video Calling</p>
-            <p>Full-Stack Development Project</p>
-            <p style="margin-top: 40px; font-size: 1.2em;">Built with Modern Web Technologies</p>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">2</span>
-                    <span class="stat-label">Main Technologies</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Features</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Real-time</span>
-                </div>
+            <p>A Full-Stack Real-time Chat Application with Video Calling</p>
+            <div class="supervisors">
+                <h3>Under the supervision of</h3>
+                <p>Dr. Ahmed Zakzouk</p>
             </div>
         </div>
 
-        <!-- Slide 2: Table of Contents -->
+        <!-- Members -->
+        <div class="slide members-slide">
+            <h2>Team Members</h2>
+            <div class="members-grid">
+                <div class="member"><p>Rawia Taher Abozaid Ahmed <span class="member-id">ID: 20258213</span></p></div>
+                <div class="member"><p>Shimaa Abdel-Razek Mohamed Ahmed <span class="member-id">ID: 20258266</span></p></div>
+                <div class="member"><p>Rawda Ashraf Mohamed <span class="member-id">ID: 20258303</span></p></div>
+                <div class="member"><p>Shorouk Amr Hosny Mohamed <span class="member-id">ID: 20258313</span></p></div>
+                <div class="member"><p>Eman Atef Mohamed Morsi <span class="member-id">ID: 20258359</span></p></div>
+
+            </div>
+        </div>
+        
+        <!-- Divider 1 -->
+        <div class="slide divider-slide">
+            <div>
+                <p>Part 1</p>
+                <h2>Project Introduction</h2>
+            </div>
+        </div>
+
         <div class="slide">
-            <h2>Presentation Overview</h2>
-            <ul style="max-width: 600px;">
-                <li>Project Introduction & Features</li>
-                <li>Technology Stack & Architecture</li>
-                <li>Backend Development (Node.js/Express)</li>
-                <li>Frontend Development (React.js)</li>
-                <li>Real-time Communication (Socket.IO)</li>
-                <li>WebRTC Video Calling Implementation</li>
-                <li>Database Design (MongoDB)</li>
-                <li>Authentication & Security</li>
-                <li>API Documentation</li>
-                <li>File Upload & Management</li>
-                <li>Responsive Design</li>
-                <li>Code Quality & Best Practices</li>
-                <li>Deployment & DevOps</li>
-                <li>Demo & Testing</li>
-                <li>Future Enhancements</li>
+            <h2>Agenda</h2>
+            <ul>
+                <li>Part 1: Project Introduction</li>
+                <li>Part 2: Technology & Architecture</li>
+                <li>Part 3: Core Features Deep Dive</li>
+                <li>Part 4: Advanced Feature Implementation</li>
+                <li>Part 5: Project Management & Conclusion</li>
             </ul>
         </div>
 
-        <!-- Slide 3: Project Introduction -->
         <div class="slide">
-            <h2>Project Introduction</h2>
-            <div class="highlight">
-                <h3>What is Alazhar Messenger?</h3>
-                <p>A comprehensive real-time chat application that enables users to communicate through text messages, share files, and conduct video calls seamlessly.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>💬 Real-time Messaging</h4>
-                    <p>Instant message delivery using Socket.IO</p>
-                </div>
-                <div class="feature-card">
-                    <h4>👥 Group Chats</h4>
-                    <p>Create and manage group conversations</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📹 Video Calling</h4>
-                    <p>Peer-to-peer video calls using WebRTC</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📎 File Sharing</h4>
-                    <p>Share images, documents, and audio files</p>
-                </div>
+            <h2>Project Vision & Motivation</h2>
+            <p>To create a modern, reliable, and feature-rich communication platform that provides seamless real-time interaction. The goal is to build a full-stack application that rivals commercial products, focusing on performance, security, and user experience.</p>
+        </div>
+
+        <div class="slide">
+            <h2>Key Features Overview</h2>
+            <div class="content-grid">
+                <div class="content-card"><h3>Real-time Messaging</h3><p>Instant one-on-one and group chat with typing indicators and online status.</p></div>
+                <div class="content-card"><h3>WebRTC Video Calling</h3><p>High-quality, peer-to-peer video and audio calls directly in the browser.</p></div>
+                <div class="content-card"><h3>Multimedia File Sharing</h3><p>Securely send and receive images, documents, and voice messages.</p></div>
+                <div class="content-card"><h3>Robust Security</h3><p>Secure authentication with JWT, password hashing, and protected API endpoints.</p></div>
             </div>
         </div>
 
-        <!-- Slide 4: Key Features -->
-        <div class="slide">
-            <h2>Key Features</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px;">
-                <div>
-                    <h3>Core Messaging Features</h3>
-                    <ul>
-                        <li>Real-time one-on-one chat</li>
-                        <li>Group chat creation and management</li>
-                        <li>Message history and persistence</li>
-                        <li>Message deletion functionality</li>
-                        <li>Typing indicators</li>
-                        <li>Online/offline status</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Advanced Features</h3>
-                    <ul>
-                        <li>Video calling with WebRTC</li>
-                        <li>File and image sharing</li>
-                        <li>Voice message recording</li>
-                        <li>User profile management</li>
-                        <li>Dark/Light theme toggle</li>
-                        <li>Responsive mobile design</li>
-                    </ul>
-                </div>
+        <!-- Divider 2 -->
+        <div class="slide divider-slide">
+            <div>
+                <p>Part 2</p>
+                <h2>Technology & Architecture</h2>
             </div>
         </div>
 
-        <!-- Slide 5: Technology Stack -->
         <div class="slide">
-            <h2>Technology Stack</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4>Frontend</h4>
-                    <p>React.js 18</p>
-                    <p>Tailwind CSS</p>
-                    <p>React Router</p>
-                    <p>Context API</p>
-                </div>
-                <div class="tech-card">
-                    <h4>Backend</h4>
-                    <p>Node.js</p>
-                    <p>Express.js</p>
-                    <p>TypeScript</p>
-                    <p>Socket.IO</p>
-                </div>
-                <div class="tech-card">
-                    <h4>Database</h4>
-                    <p>MongoDB</p>
-                    <p>Mongoose ODM</p>
-                    <p>Aggregation Pipeline</p>
-                </div>
-                <div class="tech-card">
-                    <h4>Real-time</h4>
-                    <p>Socket.IO</p>
-                    <p>WebRTC</p>
-                    <p>MediaRecorder API</p>
-                </div>
-                <div class="tech-card">
-                    <h4>Security</h4>
-                    <p>JWT Authentication</p>
-                    <p>bcrypt Hashing</p>
-                    <p>Rate Limiting</p>
-                    <p>CORS</p>
-                </div>
-                <div class="tech-card">
-                    <h4>Tools & DevOps</h4>
-                    <p>Docker</p>
-                    <p>Vercel</p>
-                    <p>Git</p>
-                    <p>Postman</p>
-                </div>
+            <h2>Technology Stack Overview</h2>
+             <div class="content-grid">
+                <div class="content-card"><h3>Frontend</h3><p>React.js, Tailwind CSS</p></div>
+                <div class="content-card"><h3>Backend</h3><p>Node.js, Express.js, TypeScript</p></div>
+                <div class="content-card"><h3>Database</h3><p>MongoDB, Mongoose</p></div>
+                <div class="content-card"><h3>Real-time</h3><p>Socket.IO, WebRTC</p></div>
             </div>
         </div>
 
-        <!-- Slide 6: System Architecture -->
         <div class="slide">
             <h2>System Architecture</h2>
-            <div class="architecture-diagram">
-                <div class="layer">Frontend Layer (React.js + Tailwind CSS)</div>
-                <div class="layer">API Gateway (Express.js Middleware)</div>
-                <div class="layer">Authentication Layer (JWT + bcrypt)</div>
-                <div class="layer">Business Logic Layer (Controllers & Services)</div>
-                <div class="layer">Real-time Communication (Socket.IO + WebRTC)</div>
-                <div class="layer">Data Access Layer (Mongoose ODM)</div>
-                <div class="layer">Database Layer (MongoDB)</div>
-                <div class="layer">File Storage (Local/Cloud Storage)</div>
+            <p>A layered architecture ensures a clear separation of concerns.</p>
+            <div class="gui-container">
+                <div class="arch-layer">Browser (React Client)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">API Gateway (Express.js)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Middleware (Auth, Validation)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Business Logic (Controllers/Services)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Data Access Layer (Mongoose)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">MongoDB Database</div>
             </div>
-            <p style="margin-top: 20px;">Modular, scalable architecture following MVC pattern with clear separation of concerns</p>
         </div>
 
-        <!-- Slide 7: Backend Architecture -->
         <div class="slide">
-            <h2>Backend Architecture</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Project Structure</h3>
-                    <div class="code-block">
-backend/
-├── src/
-│   ├── controllers/     # Request handlers
-│   ├── routes/         # API endpoints
-│   ├── middlewares/    # Custom middleware
-│   ├── database/       # DB models & repos
-│   ├── core/          # Error handling & JWT
-│   ├── helpers/       # Utility functions
-│   ├── socket/        # Socket.IO logic
-│   ├── validators/    # Input validation
-│   └── types/         # TypeScript types
-└── public/            # Static files
-                    </div>
-                </div>
-                <div>
-                    <h3>Key Design Patterns</h3>
-                    <ul>
-                        <li><strong>Repository Pattern:</strong> Database abstraction</li>
-                        <li><strong>Middleware Pattern:</strong> Request processing</li>
-                        <li><strong>Error Handling:</strong> Centralized error management</li>
-                        <li><strong>Dependency Injection:</strong> Loose coupling</li>
-                        <li><strong>MVC Pattern:</strong> Clear separation of concerns</li>
-                    </ul>
-                    
-                    <h3>Why This Architecture?</h3>
-                    <p>This architecture ensures maintainability, scalability, and testability. Each layer has a single responsibility, making the codebase easy to understand and extend.</p>
-                </div>
+            <h2>Backend Architecture: Structure</h2>
+            <p>The backend codebase is organized for maintainability.</p>
+            <div class="gui-container file-tree">
+                <ul>
+                    <li>src
+                        <ul>
+                            <li>controllers</li>
+                            <li>database (models)</li>
+                            <li>middlewares</li>
+                            <li>routes</li>
+                            <li>socket</li>
+                            <li class="file">server.ts</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <!-- Slide 8: Database Design -->
+        
         <div class="slide">
-            <h2>Database Design (MongoDB)</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Data Models</h3>
-                    <div class="code-block">
-// User Schema
-{
-  _id: ObjectId,
-  username: String (unique),
-  email: String (unique),
-  password: String (hashed),
-  avatarUrl: String,
-  bio: String,
-  status: Boolean,
-  roles: [ObjectId],
-  createdAt: Date,
-  updatedAt: Date
-}
-
-// Chat Schema
-{
-  _id: ObjectId,
-  name: String,
-  isGroupChat: Boolean,
-  lastMessage: ObjectId,
-  participants: [ObjectId],
-  admin: ObjectId,
-  createdAt: Date,
-  updatedAt: Date
-}
-                    </div>
-                </div>
-                <div>
-                    <div class="code-block">
-// Message Schema
-{
-  _id: ObjectId,
-  sender: ObjectId,
-  content: String,
-  attachments: [{
-    url: String,
-    localPath: String
-  }],
-  chat: ObjectId,
-  createdAt: Date,
-  updatedAt: Date
-}
-
-// Role Schema
-{
-  _id: ObjectId,
-  code: String (ADMIN/USER),
-  status: Boolean,
-  createdAt: Date,
-  updatedAt: Date
-}
-                    </div>
-                    <h3>Design Benefits</h3>
-                    <ul>
-                        <li>Normalized data structure</li>
-                        <li>Efficient querying with indexes</li>
-                        <li>Flexible attachment system</li>
-                        <li>Role-based access control</li>
-                    </ul>
-                </div>
-            </div>
+            <h2>Backend Architecture: Design Patterns</h2>
+             <p>We utilized established design patterns to build a robust and scalable backend.</p>
+            <ul>
+                <li><strong>Repository Pattern:</strong> Decouples business logic from data access logic.</li>
+                <li><strong>Middleware Pattern:</strong> Chains functions for handling requests, authentication, and validation.</li>
+                <li><strong>Centralized Error Handling:</strong> A single point for catching and processing all errors.</li>
+            </ul>
         </div>
 
-        <!-- Slide 9: API Design -->
         <div class="slide">
-            <h2>RESTful API Design</h2>
-            <div style="max-width: 1000px;">
-                <h3>Authentication Endpoints</h3>
-                <div class="api-endpoint">
-                    <strong>POST /auth/register</strong> - User registration<br>
-                    <strong>POST /auth/login</strong> - User login<br>
-                    <strong>POST /auth/logout</strong> - User logout<br>
-                    <strong>PATCH /auth/profile</strong> - Update user profile
-                </div>
-                
-                <h3>Chat Management</h3>
-                <div class="api-endpoint">
-                    <strong>GET /api/chat</strong> - Get user's chats<br>
-                    <strong>POST /api/chat/c/:receiverId</strong> - Create/get one-on-one chat<br>
-                    <strong>POST /api/chat/group</strong> - Create group chat<br>
-                    <strong>DELETE /api/chat/:chatId</strong> - Delete chat
-                </div>
-                
-                <h3>Message Operations</h3>
-                <div class="api-endpoint">
-                    <strong>GET /api/messages/:chatId</strong> - Get chat messages<br>
-                    <strong>POST /api/messages/:chatId</strong> - Send message<br>
-                    <strong>DELETE /api/messages/:messageId</strong> - Delete message
-                </div>
+            <h2>Frontend Architecture</h2>
+            <p>React's component-based architecture allows for reusable UI elements and simplified state logic.</p>
+            <div class="gui-container">
+                <div class="arch-layer">App.jsx</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Context Providers (Auth, Socket)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Router (Login Page, Chat Page)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Components (ChatList, MessageArea, VideoCall)</div>
             </div>
         </div>
 
-        <!-- Slide 10: Authentication & Security -->
+        <!-- Divider 3 -->
+        <div class="slide divider-slide">
+            <div>
+                <p>Part 3</p>
+                <h2>Core Features Deep Dive</h2>
+            </div>
+        </div>
+
         <div class="slide">
-            <h2>Authentication & Security</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>JWT Implementation</h3>
-                    <div class="code-block">
-// JWT Token Creation
-const createTokens = async (user) => {
-  const accessToken = await JWT.generateToken(
-    new JwtPayload(
-      tokenInfo.issuer,
-      tokenInfo.audience,
-      user._id.toString(),
-      tokenInfo.accessTokenValidity
-    )
-  );
-  
-  const refreshToken = await JWT.generateToken(
-    new JwtPayload(
-      tokenInfo.issuer,
-      tokenInfo.audience,
-      user._id.toString(),
-      tokenInfo.refreshTokenValidity
-    )
-  );
-  
-  return { accessToken, refreshToken };
-};
-                    </div>
-                </div>
-                <div>
-                    <h3>Security Features</h3>
-                    <ul>
-                        <li><strong>Password Hashing:</strong> bcrypt with salt rounds</li>
-                        <li><strong>JWT Tokens:</strong> Access & refresh token strategy</li>
-                        <li><strong>Rate Limiting:</strong> 200 requests per minute</li>
-                        <li><strong>CORS:</strong> Cross-origin request protection</li>
-                        <li><strong>Input Validation:</strong> express-validator</li>
-                        <li><strong>Error Handling:</strong> No sensitive data exposure</li>
-                    </ul>
-                    
-                    <h3>Middleware Chain</h3>
-                    <ul>
-                        <li>Request IP tracking</li>
-                        <li>Rate limiting</li>
-                        <li>JWT verification</li>
-                        <li>Input validation</li>
-                        <li>Error handling</li>
-                    </ul>
-                </div>
+            <h2>Database Design: Data Models</h2>
+            <p>Our MongoDB database uses distinct collections designed for efficient querying.</p>
+            <div class="gui-container db-schema-container">
+                <div class="db-schema"><h4>User</h4><ul><li>username</li><li>email</li><li>password (hash)</li><li>avatarUrl</li></ul></div>
+                <div class="db-schema"><h4>Chat</h4><ul><li>name</li><li>isGroupChat</li><li>participants[]</li><li>lastMessage</li></ul></div>
+                <div class="db-schema"><h4>Message</h4><ul><li>sender</li><li>content</li><li>chat</li><li>attachments[]</li></ul></div>
             </div>
         </div>
 
-        <!-- Slide 11: Real-time Communication -->
         <div class="slide">
-            <h2>Real-time Communication (Socket.IO)</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Socket Events</h3>
-                    <div class="code-block">
-// Socket Event Definitions
-const socketEvents = {
-  CONNECTED_EVENT: "connected",
-  DISCONNECT_EVENT: "disconnect",
-  JOIN_CHAT_EVENT: "joinChat",
-  MESSAGE_RECEIVED_EVENT: "messageReceived",
-  MESSAGE_DELETE_EVENT: "messageDeleted",
-  START_TYPING_EVENT: "startTyping",
-  STOP_TYPING_EVENT: "stopTyping",
-  NEW_CHAT_EVENT: "newChat",
-  LEAVE_CHAT_EVENT: "leaveChat"
-};
-
-// Authentication
-socket.on("connection", async (socket) => {
-  const token = cookies?.accessToken || 
-                socket.handshake.auth?.token;
-  const user = await authenticateUser(token);
-  socket.user = user;
-  socket.join(user._id.toString());
-});
-                    </div>
-                </div>
-                <div>
-                    <h3>Real-time Features</h3>
-                    <ul>
-                        <li><strong>Instant Messaging:</strong> Message delivery in real-time</li>
-                        <li><strong>Typing Indicators:</strong> Show when users are typing</li>
-                        <li><strong>Online Status:</strong> Track user presence</li>
-                        <li><strong>Room Management:</strong> Join/leave chat rooms</li>
-                        <li><strong>Message Broadcasting:</strong> Notify all participants</li>
-                    </ul>
-                    
-                    <h3>Connection Management</h3>
-                    <ul>
-                        <li>Automatic reconnection</li>
-                        <li>Token-based authentication</li>
-                        <li>Error handling</li>
-                        <li>Graceful disconnection</li>
-                    </ul>
-                </div>
+            <h2>Database Design: Relationships</h2>
+            <p>Data models are interconnected using ObjectIDs.</p>
+             <div class="gui-container flowchart">
+                <div class="flow-step">User</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Creates / Joins</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Chat</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Sends / Receives</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Message</div>
             </div>
         </div>
 
-        <!-- Slide 12: WebRTC Video Calling -->
         <div class="slide">
-            <h2>WebRTC Video Calling</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>WebRTC Implementation</h3>
-                    <div class="code-block">
-// Peer Connection Setup
-const createPeerConnection = async () => {
-  peerConnectionRef.current = new RTCPeerConnection({
-    iceServers: [
-      {
-        urls: ["stun:stun.l.google.com:19302"]
-      },
-      {
-        urls: "turn:openrelay.metered.ca:80",
-        username: "openrelayproject",
-        credential: "openrelayproject"
-      }
-    ]
-  });
-
-  // Handle ICE candidates
-  peerConnectionRef.current.addEventListener(
-    "icecandidate", (event) => {
-      if (event.candidate) {
-        socket.emit("sendIceCandidateToSignalingServer", {
-          iceCandidate: event.candidate,
-          iceUserId: targetUserId
-        });
-      }
-    }
-  );
-};
-                    </div>
-                </div>
-                <div>
-                    <h3>Video Call Features</h3>
-                    <ul>
-                        <li><strong>Peer-to-peer Video:</strong> Direct connection between users</li>
-                        <li><strong>Audio Controls:</strong> Mute/unmute microphone</li>
-                        <li><strong>Video Controls:</strong> Enable/disable camera</li>
-                        <li><strong>Camera Flip:</strong> Switch between front/back camera</li>
-                        <li><strong>Device Selection:</strong> Choose audio/video devices</li>
-                        <li><strong>Call Management:</strong> Accept/reject/hangup calls</li>
-                    </ul>
-                    
-                    <h3>Signaling Server</h3>
-                    <ul>
-                        <li>Offer/Answer exchange</li>
-                        <li>ICE candidate exchange</li>
-                        <li>Call state management</li>
-                        <li>Incoming call notifications</li>
-                    </ul>
-                </div>
+            <h2>API Design: Key Endpoints</h2>
+            <p>The API exposes endpoints for all major functionalities.</p>
+            <div class="gui-container" style="text-align: left;">
+                <div class="api-endpoint post"><span class="method">POST</span> /auth/register</div>
+                <div class="api-endpoint post"><span class="method">POST</span> /auth/login</div>
+                <div class="api-endpoint"><span class="method">GET</span> /api/chats</div>
+                <div class="api-endpoint post"><span class="method">POST</span> /api/messages/:chatId</div>
+                <div class="api-endpoint delete"><span class="method">DELETE</span> /api/messages/:messageId</div>
             </div>
         </div>
 
-        <!-- Slide 13: Frontend Architecture -->
         <div class="slide">
-            <h2>Frontend Architecture (React.js)</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Component Structure</h3>
-                    <div class="code-block">
-src/
-├── components/          # Reusable components
-│   ├── AddChat.jsx
-│   ├── ChatsSection.jsx
-│   ├── VideoChat.jsx
-│   ├── ProfileSidebar.jsx
-│   └── ...
-├── context/            # State management
-│   ├── AuthContext.jsx
-│   ├── ChatContext.jsx
-│   ├── SocketContext.jsx
-│   └── WebRtcContext.jsx
-├── pages/              # Route components
-│   ├── Login.jsx
-│   ├── Register.jsx
-│   └── Chat.jsx
-├── api/                # API integration
-└── utils/              # Helper functions
-                    </div>
-                </div>
-                <div>
-                    <h3>State Management</h3>
-                    <ul>
-                        <li><strong>Context API:</strong> Global state management</li>
-                        <li><strong>AuthContext:</strong> User authentication state</li>
-                        <li><strong>ChatContext:</strong> Chat and message state</li>
-                        <li><strong>SocketContext:</strong> Real-time connections</li>
-                        <li><strong>WebRtcContext:</strong> Video call state</li>
-                    </ul>
-                    
-                    <h3>Key Design Principles</h3>
-                    <ul>
-                        <li>Component reusability</li>
-                        <li>Separation of concerns</li>
-                        <li>Responsive design</li>
-                        <li>Performance optimization</li>
-                        <li>Accessibility</li>
-                    </ul>
-                </div>
+            <h2>Authentication: JWT Flow</h2>
+            <p>User authentication is handled via a secure and stateless JWT flow.</p>
+            <div class="gui-container flowchart">
+                <div class="flow-step">1. Login with Credentials</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">2. Server Validates & Issues Token</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">3. Client Stores Token</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">4. Token Sent in Header for API Calls</div>
             </div>
         </div>
 
-        <!-- Slide 14: UI/UX Design -->
         <div class="slide">
-            <h2>UI/UX Design & Responsive Layout</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>🎨 Modern Design</h4>
-                    <p>Clean, intuitive interface with Tailwind CSS</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🌓 Dark/Light Theme</h4>
-                    <p>Theme switcher with persistent preferences</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📱 Mobile Responsive</h4>
-                    <p>Optimized for all screen sizes</p>
-                </div>
-                <div class="feature-card">
-                    <h4>⚡ Performance</h4>
-                    <p>Optimized rendering and state updates</p>
-                </div>
-            </div>
-            <div class="highlight">
-                <h3>Responsive Design Strategy</h3>
-                <p>The application uses Tailwind CSS with custom breakpoints to ensure a seamless experience across desktop, tablet, and mobile devices. The layout adapts dynamically with collapsible sidebars and optimized touch interactions for mobile users.</p>
+            <h2>Security Measures</h2>
+            <p>Security is implemented at multiple layers of the application.</p>
+            <div class="content-grid two-column-grid">
+                <div class="content-card"><h3>Password Hashing</h3><p>Using `bcrypt` to securely hash and salt user passwords before storing them.</p></div>
+                <div class="content-card"><h3>Rate Limiting</h3><p>Protecting against brute-force attacks by limiting API requests per IP.</p></div>
+                <div class="content-card"><h3>CORS Policy</h3><p>Restricting API access to only our whitelisted frontend domain.</p></div>
+                <div class="content-card"><h3>Input Validation</h3><p>Sanitizing all user input on the backend to prevent injection attacks.</p></div>
             </div>
         </div>
-
-        <!-- Slide 15: File Upload & Management -->
+        
         <div class="slide">
-            <h2>File Upload & Management</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Multer Configuration</h3>
-                    <div class="code-block">
-// File Upload Setup
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "..", "..", "public", "images"));
-  },
-  filename: function (req, file, cb) {
-    const fileExtension = file.originalname.substring(
-      file.originalname.lastIndexOf(".")
-    );
-    const filenameWithoutExtension = file.originalname
-      .split(" ").join("-")
-      .split(".").slice(0, -1).join(".");
-    
-    cb(null, filenameWithoutExtension + 
-       Date.now() + 
-       Math.ceil(Math.random() * 1e3) + 
-       fileExtension);
-  }
-});
+            <h2>Real-time Intro: Socket.IO</h2>
+            <p>Socket.IO enables real-time, bidirectional communication.</p>
+            <div class="gui-container flowchart">
+                <div class="flow-step">Client</div>
+                <div class="flow-arrow" style="writing-mode: vertical-rl; transform: rotate(180deg);">↔</div>
+                <div class="flow-step">Socket.IO Server</div>
+            </div>
+             <p style="margin-top: 10px;">This persistent connection allows the server to push updates instantly.</p>
+        </div>
 
-export const upload = multer({
-  storage,
-  limits: { fileSize: 50 * 1024 * 1024 } // 50MB
-});
-                    </div>
-                </div>
-                <div>
-                    <h3>File Management Features</h3>
-                    <ul>
-                        <li><strong>Multiple File Types:</strong> Images, documents, audio</li>
-                        <li><strong>File Size Limits:</strong> 50MB per file</li>
-                        <li><strong>Secure Storage:</strong> Server-side file validation</li>
-                        <li><strong>File Preview:</strong> Image thumbnails and previews</li>
-                        <li><strong>Download Support:</strong> Direct file downloads</li>
-                        <li><strong>Voice Messages:</strong> Audio recording and playback</li>
-                    </ul>
-                    
-                    <h3>File Types Supported</h3>
-                    <ul>
-                        <li>Images: JPG, PNG, GIF, WebP</li>
-                        <li>Documents: PDF, DOC, TXT</li>
-                        <li>Audio: MP3, WAV, WebM</li>
-                        <li>Voice recordings: WebM format</li>
-                    </ul>
-                </div>
+        <div class="slide">
+            <h2>Real-time: Event Handling</h2>
+            <p>The application defines and handles specific socket events for all real-time interactions.</p>
+             <div class="gui-container">
+                <p>Client emits <strong>'sendMessage'</strong> → Server receives → Server broadcasts <strong>'messageReceived'</strong> to chat room members.</p>
+                <p style="margin-top: 15px;">Client emits <strong>'startTyping'</strong> → Server broadcasts <strong>'typing'</strong> to other user.</p>
             </div>
         </div>
 
-        <!-- Slide 16: Error Handling & Validation -->
+        <!-- Divider 4 -->
+        <div class="slide divider-slide">
+            <div>
+                <p>Part 4</p>
+                <h2>Advanced Feature Implementation</h2>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Intro to WebRTC</h2>
+            <p>WebRTC enables peer-to-peer audio and video communication directly in the browser, without an intermediary server for the media stream.</p>
+        </div>
+
+        <div class="slide">
+            <h2>WebRTC: Signaling Explained</h2>
+            <p>A "signaling" server is needed to help two clients find and connect to each other. We use our Socket.IO server for this.</p>
+            <div class="gui-container flowchart">
+                <div class="flow-step">Caller sends Offer</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Signaling Server</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Receiver gets Offer, sends Answer</div>
+                <div class="flow-arrow">←</div>
+                 <div class="flow-step">Signaling Server</div>
+                <div class="flow-arrow">←</div>
+                <div class="flow-step">Caller gets Answer</div>
+            </div>
+            <p>After this, a direct P2P connection is established.</p>
+        </div>
+
+        <div class="slide">
+            <h2>WebRTC: Implementation</h2>
+            <p>The `RTCPeerConnection` object manages the lifecycle of a peer-to-peer connection.</p>
+             <div class="gui-container">
+                <div class="arch-layer">Create RTCPeerConnection</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Add Local Media Stream (Camera/Mic)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Create & Send Offer (via Signaling)</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Receive Answer & Set Remote Description</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">Handle Remote Media Stream</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>File Uploads: The Process</h2>
+            <p>Files are processed on the server using `multer` middleware and stored securely.</p>
+            <div class="gui-container flowchart">
+                <div class="flow-step">1. Client Uploads File</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">2. Express Server & Multer Middleware</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">3. File Saved to Disk</div>
+                 <div class="flow-arrow">→</div>
+                <div class="flow-step">4. Path Saved to DB</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>File Uploads: Security</h2>
+            <p>To ensure security and system stability, all file uploads are validated on the server.</p>
+            <ul>
+                <li><strong>File Type Validation:</strong> Only whitelisted file extensions (e.g., .jpg, .png, .pdf) are accepted.</li>
+                <li><strong>File Size Limits:</strong> A maximum file size is enforced to prevent disk space abuse.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>UI/UX & Responsive Design</h2>
+            <p>The application is fully responsive, providing an optimal user experience on all devices.</p>
+            <div class="gui-container" style="display: flex; justify-content: space-around; align-items: flex-end; gap: 20px;">
+                <img src="https://placehold.co/300x200/0d2c54/ffffff?text=Desktop" alt="Desktop Mockup" style="border: 5px solid #333; border-radius: 5px;">
+                <img src="https://placehold.co/150x220/0d2c54/ffffff?text=Tablet" alt="Tablet Mockup" style="border: 5px solid #333; border-radius: 5px;">
+                <img src="https://placehold.co/80x160/0d2c54/ffffff?text=Mobile" alt="Mobile Mockup" style="border: 5px solid #333; border-radius: 5px;">
+            </div>
+        </div>
+
+        <!-- Divider 5 -->
+        <div class="slide divider-slide">
+            <div>
+                <p>Part 5</p>
+                <h2>Project Management & Conclusion</h2>
+            </div>
+        </div>
+
         <div class="slide">
             <h2>Error Handling & Validation</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Centralized Error Handling</h3>
-                    <div class="code-block">
-// Custom Error Classes
-export class ApiError extends Error {
-  constructor(public type: ErrorType, 
-              public message: string = "error") {
-    super(type);
-    Error.captureStackTrace(this, this.constructor);
-  }
-
-  public static handle(err: ApiError, res: Response) {
-    switch (err.type) {
-      case ErrorType.BAD_REQUEST:
-        return new BadRequestResponse(err.message).send(res);
-      case ErrorType.UNAUTHORIZED:
-        return new AuthFailureResponse(err.message).send(res);
-      case ErrorType.NOT_FOUND:
-        return new NotFoundResponse(err.message).send(res);
-      default:
-        return new InternalErrorResponse("Something went wrong").send(res);
-    }
-  }
-}
-                    </div>
-                </div>
-                <div>
-                    <h3>Input Validation</h3>
-                    <div class="code-block">
-// Express Validator Implementation
-const userRegisterValidator = () => {
-  return [
-    body("email")
-      .trim()
-      .notEmpty()
-      .withMessage("email is required")
-      .isEmail()
-      .withMessage("invalid email address"),
-    
-    body("username")
-      .trim()
-      .notEmpty()
-      .withMessage("username is required")
-      .isLowercase()
-      .withMessage("username must be in lowercase")
-      .isLength({ min: 3 })
-      .withMessage("username must contain at least 3 characters"),
-    
-    body("password")
-      .trim()
-      .notEmpty()
-      .withMessage("password is required")
-      .isLength({ min: 4 })
-      .withMessage("password must contain at least 4 characters")
-  ];
-};
-                    </div>
-                </div>
+            <p>Robust error handling prevents crashes, while input validation protects the system.</p>
+            <div class="gui-container">
+                 <div class="arch-layer">Request Arrives</div>
+                 <div class="arch-arrow">↓</div>
+                 <div class="arch-layer" style="border-color: #f59e0b;">Validation Middleware (Checks Input)</div>
+                 <div class="arch-arrow">↓</div>
+                 <div class="arch-layer">Controller Logic (try...catch block)</div>
+                 <div class="arch-arrow">↓</div>
+                 <div class="arch-layer" style="border-color: #ef4444;">Central Error Handler (Catches all errors)</div>
             </div>
         </div>
 
-        <!-- Slide 17: Performance Optimization -->
-        <div class="slide">
-            <h2>Performance Optimization</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>⚡ Database Optimization</h4>
-                    <p>MongoDB aggregation pipelines for efficient queries</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🔄 State Management</h4>
-                    <p>React Context API with optimized re-renders</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📦 Code Splitting</h4>
-                    <p>Dynamic imports and lazy loading</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🖼️ Image Optimization</h4>
-                    <p>Lazy loading and compression</p>
-                </div>
-            </div>
-            <div class="highlight">
-                <h3>Optimization Strategies Implemented</h3>
-                <ul style="text-align: left; max-width: 800px;">
-                    <li><strong>Database:</strong> Efficient aggregation pipelines, proper indexing</li>
-                    <li><strong>Frontend:</strong> React.memo for component optimization</li>
-                    <li><strong>Real-time:</strong> Event-driven updates, minimal data transfer</li>
-                    <li><strong>Files:</strong> Streaming uploads, background processing</li>
-                    <li><strong>Network:</strong> Request debouncing, connection pooling</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Slide 18: Testing & Quality Assurance -->
-        <div class="slide">
-            <h2>Testing & Quality Assurance</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Code Quality Tools</h3>
-                    <ul>
-                        <li><strong>TypeScript:</strong> Type safety and better IDE support</li>
-                        <li><strong>ESLint:</strong> Code linting and style consistency</li>
-                        <li><strong>Prettier:</strong> Code formatting</li>
-                        <li><strong>Git Hooks:</strong> Pre-commit quality checks</li>
-                    </ul>
-                    
-                    <h3>Development Best Practices</h3>
-                    <ul>
-                        <li>Consistent naming conventions</li>
-                        <li>Modular component architecture</li>
-                        <li>Comprehensive error handling</li>
-                        <li>Documentation and comments</li>
-                        <li>Version control with meaningful commits</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Testing Strategy</h3>
-                    <ul>
-                        <li><strong>Manual Testing:</strong> Comprehensive feature testing</li>
-                        <li><strong>API Testing:</strong> Postman collections</li>
-                        <li><strong>Cross-browser Testing:</strong> Chrome, Firefox, Safari</li>
-                        <li><strong>Responsive Testing:</strong> Multiple device sizes</li>
-                        <li><strong>Performance Testing:</strong> Load testing with multiple users</li>
-                    </ul>
-                    
-                    <h3>Quality Metrics</h3>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-label">Type Coverage</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">0</span>
-                            <span class="stat-label">ESLint Errors</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 19: Deployment & DevOps -->
-        <div class="slide">
-            <h2>Deployment & DevOps</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Docker Configuration</h3>
-                    <div class="code-block">
-# Multi-stage Docker Build
-FROM node:16-alpine AS build
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build
-
-FROM node:16-alpine AS production
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY --from=build /app/public ./public
-COPY --from=build /app/dist ./dist
-
-EXPOSE 5000
-CMD ["node", "dist/server.js"]
-                    </div>
-                </div>
-                <div>
-                    <h3>Deployment Strategy</h3>
-                    <ul>
-                        <li><strong>Frontend:</strong> Vercel for React app</li>
-                        <li><strong>Backend:</strong> Docker containerization</li>
-                        <li><strong>Database:</strong> MongoDB Atlas cloud</li>
-                        <li><strong>Static Files:</strong> CDN integration</li>
-                    </ul>
-                    
-                    <h3>Environment Configuration</h3>
-                    <ul>
-                        <li>Development environment</li>
-                        <li>Production environment</li>
-                        <li>Environment variables</li>
-                        <li>CORS configuration</li>
-                        <li>SSL/HTTPS setup</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 20: Security Implementation -->
-        <div class="slide">
-            <h2>Security Implementation</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>🔐 Authentication</h4>
-                    <p>JWT tokens with refresh mechanism</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🛡️ Authorization</h4>
-                    <p>Role-based access control (RBAC)</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🔒 Data Protection</h4>
-                    <p>Password hashing with bcrypt</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🚫 Rate Limiting</h4>
-                    <p>API request throttling</p>
-                </div>
-            </div>
-            <div class="highlight">
-                <h3>Security Measures Implemented</h3>
-                <ul style="text-align: left; max-width: 800px;">
-                    <li><strong>Input Sanitization:</strong> XSS and injection prevention</li>
-                    <li><strong>CORS Policy:</strong> Restrict cross-origin requests</li>
-                    <li><strong>File Upload Security:</strong> Type and size validation</li>
-                    <li><strong>Error Handling:</strong> No sensitive information disclosure</li>
-                    <li><strong>Session Management:</strong> Secure token handling</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Slide 21: Challenges & Solutions -->
         <div class="slide">
             <h2>Challenges & Solutions</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Technical Challenges</h3>
-                    <ul>
-                        <li><strong>Real-time Synchronization:</strong> Ensuring message delivery and order</li>
-                        <li><strong>WebRTC Complexity:</strong> Handling peer connections and signaling</li>
-                        <li><strong>State Management:</strong> Complex state across multiple contexts</li>
-                        <li><strong>File Handling:</strong> Large file uploads and storage</li>
-                        <li><strong>Mobile Responsiveness:</strong> Touch interactions and layout</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Solutions Implemented</h3>
-                    <ul>
-                        <li><strong>Socket.IO Rooms:</strong> Efficient message broadcasting</li>
-                        <li><strong>STUN/TURN Servers:</strong> NAT traversal for WebRTC</li>
-                        <li><strong>Context API:</strong> Centralized state management</li>
-                        <li><strong>Multer Middleware:</strong> Streaming file uploads</li>
-                        <li><strong>Tailwind CSS:</strong> Mobile-first responsive design</li>
-                    </ul>
-                    
-                    <h3>Lessons Learned</h3>
-                    <ul>
-                        <li>Importance of proper error handling</li>
-                        <li>WebRTC requires careful connection management</li>
-                        <li>Real-time features need robust testing</li>
-                        <li>Mobile optimization is crucial</li>
-                    </ul>
-                </div>
+            <div class="content-grid">
+                <div class="content-card"><h3>Challenge: WebRTC Complexity</h3><p><strong>Solution:</strong> Implemented STUN/TURN servers for NAT traversal and a robust signaling mechanism.</p></div>
+                <div class="content-card"><h3>Challenge: Real-time State Sync</h3><p><strong>Solution:</strong> Used Socket.IO rooms for efficient event broadcasting and React Context for centralized state management.</p></div>
+                <div class="content-card"><h3>Challenge: Scalable Architecture</h3><p><strong>Solution:</strong> Adopted a modular structure with design patterns like Repository to ensure the system is maintainable and extensible.</p></div>
             </div>
         </div>
 
-        <!-- Slide 22: Code Quality & Best Practices -->
-        <div class="slide">
-            <h2>Code Quality & Best Practices</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px;">
-                <div>
-                    <h3>Backend Best Practices</h3>
-                    <div class="code-block">
-// Repository Pattern Example
-class UserRepository {
-  async findById(id: Types.ObjectId): Promise<User | null> {
-    return UserModel.findOne({ _id: id, status: true })
-      .populate({
-        path: "roles",
-        match: { status: true },
-        select: { code: 1 }
-      })
-      .lean();
-  }
-
-  async create(user: User, roleCode: string): Promise<User> {
-    const role = await RoleModel.findOne({ code: roleCode });
-    if (!role) throw new InternalError("role must be specified");
-    
-    user.roles = [role];
-    const createdUser = await UserModel.create(user);
-    return createdUser.toObject();
-  }
-}
-                    </div>
-                </div>
-                <div>
-                    <h3>Frontend Best Practices</h3>
-                    <div class="code-block">
-// Custom Hook Example
-const useChat = () => {
-  const context = useContext(chatContext);
-  if (!context) {
-    throw new Error('useChat must be used within ChatProvider');
-  }
-  return context;
-};
-
-// Error Boundary Implementation
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <ErrorFallback />;
-    }
-    return this.props.children;
-  }
-}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 23: Future Enhancements -->
         <div class="slide">
             <h2>Future Enhancements</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>🔄 Advanced Features</h4>
-                    <p>Message reactions, replies, and forwarding</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🤖 AI Integration</h4>
-                    <p>Chatbots and smart suggestions</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📊 Analytics</h4>
-                    <p>Usage statistics and reporting</p>
-                </div>
-                <div class="feature-card">
-                    <h4>🔒 End-to-End Encryption</h4>
-                    <p>Enhanced security for messages</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📱 Mobile App</h4>
-                    <p>React Native mobile application</p>
-                </div>
-                <div class="feature-card">
-                    <h4>☁️ Cloud Storage</h4>
-                    <p>AWS S3 integration for files</p>
-                </div>
-            </div>
-            <div class="highlight">
-                <h3>Scalability Improvements</h3>
-                <ul style="text-align: left; max-width: 800px;">
-                    <li><strong>Microservices:</strong> Break down into smaller services</li>
-                    <li><strong>Redis:</strong> Caching and session management</li>
-                    <li><strong>Load Balancing:</strong> Handle increased traffic</li>
-                    <li><strong>CDN:</strong> Global content delivery</li>
-                </ul>
+            <p>The application has a solid foundation for future growth and new features.</p>
+            <div class="content-grid two-column-grid">
+                <div class="content-card"><h3>Message Reactions & Replies</h3><p>Adding the ability to react to messages with emojis and reply in threads.</p></div>
+                <div class="content-card"><h3>End-to-End Encryption</h3><p>Implementing E2EE for maximum privacy and security in one-on-one chats.</p></div>
+                <div class="content-card"><h3>Cloud Storage Integration</h3><p>Moving file storage to a cloud service like AWS S3 for better scalability.</p></div>
+                <div class="content-card"><h3>Mobile App</h3><p>Developing a native mobile application using React Native for iOS and Android.</p></div>
             </div>
         </div>
 
-        <!-- Slide 24: Live Demo -->
-        <div class="slide">
-            <h2>Live Demo</h2>
-            <div class="highlight">
-                <h3>🚀 Application Demonstration</h3>
-                <p style="font-size: 1.5em; margin: 20px 0;">Let's explore the Alazhar Messenger in action!</p>
-            </div>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>1. User Registration & Login</h4>
-                    <p>Create account and authenticate</p>
-                </div>
-                <div class="feature-card">
-                    <h4>2. Real-time Messaging</h4>
-                    <p>Send and receive instant messages</p>
-                </div>
-                <div class="feature-card">
-                    <h4>3. File Sharing</h4>
-                    <p>Upload and share various file types</p>
-                </div>
-                <div class="feature-card">
-                    <h4>4. Video Calling</h4>
-                    <p>Initiate peer-to-peer video calls</p>
-                </div>
-                <div class="feature-card">
-                    <h4>5. Group Chats</h4>
-                    <p>Create and manage group conversations</p>
-                </div>
-                <div class="feature-card">
-                    <h4>6. Voice Messages</h4>
-                    <p>Record and send audio messages</p>
-                </div>
-            </div>
-            
-            <p style="margin-top: 30px; font-size: 1.3em; color: #2563eb;">
-                <strong>Demo URL:</strong> [Your deployed application URL]
-            </p>
-        </div>
-
-        <!-- Slide 25: Conclusion -->
         <div class="slide title-slide">
-            <h1 style="font-size: 3em;">Project Summary</h1>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">2000+</span>
-                    <span class="stat-label">Lines of Code</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Components</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">25+</span>
-                    <span class="stat-label">API Endpoints</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Database Models</span>
-                </div>
+            <h1>Thank You</h1>
+            <p>This project successfully demonstrates a full-stack, real-time communication platform with modern web technologies.</p>
+            <div class="supervisors" style="margin-top: 50px;">
+                <h3>Questions & Discussion</h3>
             </div>
-            
-            <div class="highlight" style="background: rgba(255,255,255,0.1); border-left: 5px solid #10b981;">
-                <h3 style="color: white;">Key Achievements</h3>
-                <ul style="text-align: left; color: white;">
-                    <li>Full-stack real-time chat application</li>
-                    <li>WebRTC video calling implementation</li>
-                    <li>Scalable architecture with modern technologies</li>
-                    <li>Responsive design for all devices</li>
-                    <li>Comprehensive security implementation</li>
-                    <li>Professional-grade code quality</li>
-                </ul>
-            </div>
-            
-            <p style="font-size: 1.5em; margin-top: 30px;">
-                Thank you for your attention! 🙏
-            </p>
-            <p style="font-size: 1.2em; opacity: 0.9;">
-                Questions & Discussion
-            </p>
         </div>
+
     </div>
 
     <div class="navigation">
@@ -1764,120 +691,28 @@ class ErrorBoundary extends Component {
             
             document.getElementById('current-slide').textContent = currentSlide + 1;
             
-            // Update navigation buttons
             document.getElementById('prevBtn').disabled = currentSlide === 0;
             document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
         }
         
         function changeSlide(direction) {
-            if (direction === 1 && currentSlide < totalSlides - 1) {
-                showSlide(currentSlide + 1);
-            } else if (direction === -1 && currentSlide > 0) {
-                showSlide(currentSlide - 1);
+            const nextSlideIndex = currentSlide + direction;
+            if (nextSlideIndex >= 0 && nextSlideIndex < totalSlides) {
+                showSlide(nextSlideIndex);
             }
         }
         
-        // Initialize
         showSlide(0);
         
-        // Touch gesture support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        let touchStartY = 0;
-        let touchEndY = 0;
-        
-        const minSwipeDistance = 50;
-        
-        document.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        });
-        
-        document.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipeGesture();
-        });
-        
-        function handleSwipeGesture() {
-            const diffX = touchStartX - touchEndX;
-            const diffY = Math.abs(touchStartY - touchEndY);
-            
-            // Only handle horizontal swipes (ignore vertical scrolling)
-            if (Math.abs(diffX) > minSwipeDistance && diffY < 100) {
-                if (diffX > 0) {
-                    // Swipe left - next slide
-                    changeSlide(1);
-                } else {
-                    // Swipe right - previous slide
-                    changeSlide(-1);
-                }
-            }
-        }
-        
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
+            if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
                 e.preventDefault();
                 changeSlide(1);
-            } else if (e.key === 'ArrowLeft') {
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
                 e.preventDefault();
                 changeSlide(-1);
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                showSlide(0);
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                showSlide(totalSlides - 1);
             }
         });
-        
-        // Prevent zoom on double tap for mobile
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            let now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
-        
-        // Handle orientation changes
-        window.addEventListener('orientationchange', function() {
-            // Small delay to ensure the orientation change is complete
-            setTimeout(function() {
-                // Force a redraw by triggering a slide update
-                showSlide(currentSlide);
-            }, 100);
-        });
-        
-        // Optimize for mobile performance
-        if ('serviceWorker' in navigator) {
-            // Add touch-action to prevent scrolling issues
-            document.body.style.touchAction = 'pan-y';
-        }
-    </script>', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                changeSlide(1);
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                changeSlide(-1);
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                showSlide(0);
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                showSlide(totalSlides - 1);
-            }
-        });
-        
-        // Auto-advance for demo (uncomment if needed)
-        // setInterval(() => {
-        //     if (currentSlide < totalSlides - 1) {
-        //         changeSlide(1);
-        //     }
-        // }, 10000); // 10 seconds per slide
     </script>
 </body>
 </html>
